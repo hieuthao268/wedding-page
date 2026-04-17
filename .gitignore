@@ -27,7 +27,7 @@ dist-ssr
 canva-save/
 canva-image/
 canva-pdf/
-assets/
+#assets/
 init-prompt.md
 
 # Gemini/Agent metadata
