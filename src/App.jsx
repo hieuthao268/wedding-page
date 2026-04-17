@@ -43,7 +43,7 @@ function App() {
           </div>
           
           <div className="flex justify-center py-4">
-            <img src="/images/5fbbafa58da397959a9a169a82f53d75.png" alt="Rings" className="w-16 h-16 opacity-80" />
+            <img src="images/5fbbafa58da397959a9a169a82f53d75.png" alt="Rings" className="w-16 h-16 opacity-80" />
           </div>
 
           <h2 className="text-4xl md:text-5xl leading-tight font-serif italic">
@@ -60,7 +60,7 @@ function App() {
       {/* Hero Section */}
       <Section fullWidth className="!p-0 relative h-[30vh] md:h-[40vh] overflow-hidden">
         <img 
-          src="/images/1f3293a6d3b84dfc5572b91d9989aa0f.png" 
+          src="images/1f3293a6d3b84dfc5572b91d9989aa0f.png" 
           alt="Wedding Hero" 
           className="w-full h-full object-cover"
         />
@@ -92,21 +92,21 @@ function App() {
               time: "15:00 | 09.05.2026",
               location: "Trung tâm Hội nghị quốc gia",
               address: "Số 57 Phạm Hùng, P. Từ Liêm, TP. Hà Nội",
-              icon: "/images/2d0b56e7e51cf11036ad8734bdb67e2d.png" // Placeholder for couple icon
+              icon: "images/2d0b56e7e51cf11036ad8734bdb67e2d.png" // Placeholder for couple icon
             },
             {
               title: "Lễ Vu Quy",
               time: "16:00 | 23.05.2026",
               location: "Đường Chùa Đào",
               address: "X. Bình Mỹ, Tỉnh Ninh Bình",
-              icon: "/images/2f13672c1495255380bc3c2815bea4b5.png" // Placeholder for bride icon
+              icon: "images/2f13672c1495255380bc3c2815bea4b5.png" // Placeholder for bride icon
             },
             {
               title: "Lễ Thành Hôn",
               time: "10:00 | 24.05.2026",
               location: "Khu 7, Trạm Trôi",
               address: "X. Hoài Đức, TP. Hà Nội",
-              icon: "/images/406d195be5380723a272647434a48d11.png" // Placeholder for flower icon
+              icon: "images/406d195be5380723a272647434a48d11.png" // Placeholder for flower icon
             }
           ].map((event, i) => (
             <motion.div 
@@ -138,7 +138,7 @@ function App() {
       <Section id="rsvp" className="bg-sage/20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="rounded-lg overflow-hidden h-[500px]">
-            <img src="/images/45717bd71fee87c89f0ae0037b46d708.jpg" alt="RSVP Side" className="w-full h-full object-cover" />
+            <img src="images/45717bd71fee87c89f0ae0037b46d708.jpg" alt="RSVP Side" className="w-full h-full object-cover" />
           </div>
           <RSVPForm />
         </div>
@@ -154,7 +154,7 @@ function App() {
         ].map((img, i) => (
           <div key={i} className="aspect-square overflow-hidden group">
             <img 
-              src={`/images/${img}`} 
+              src={`images/${img}`} 
               alt={`Gallery ${i}`} 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
@@ -180,7 +180,7 @@ function App() {
 
       {/* Large Bottom Image */}
       <div className="h-[30vh] md:h-[40vh] overflow-hidden">
-        <img src="/images/dd4c9895c13ae54b8cb11996622c20ca.jpg" alt="Bottom Hero" className="w-full h-full object-cover" />
+        <img src="images/dd4c9895c13ae54b8cb11996622c20ca.jpg" alt="Bottom Hero" className="w-full h-full object-cover" />
       </div>
 
       {/* Footer */}

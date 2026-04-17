@@ -17,7 +17,7 @@ const MusicPlayer = () => {
 
   return (
     <div className="fixed bottom-8 right-8 z-50">
-      <audio ref={audioRef} src="/audio/wedding-theme.mp3" loop />
+      <audio ref={audioRef} src="audio/wedding-theme.mp3" loop />
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
