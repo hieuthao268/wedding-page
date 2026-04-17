@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-beige text-charcoal font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+.timeline-dot::after {
+  content: '';
+  @apply absolute left-1/2 -bottom-2 w-1 h-1 bg-charcoal rounded-full -translate-x-1/2;
+}
