@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+/dist
+
 node_modules
 dist-ssr
 *.local
@@ -26,8 +28,11 @@ dist-ssr
 canva-save/
 canva-image/
 canva-pdf/
-#assets/
+/assets/
 init-prompt.md
 
 # Gemini/Agent metadata
 .gemini/
+
+# Vite
+.vite

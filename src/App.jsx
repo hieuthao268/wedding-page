@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Calendar, Clock } from 'lucide-react';
 import MusicPlayer from './components/MusicPlayer';
 import RSVPForm from './components/RSVPForm';
+import EventCountdown from './components/EventCountdown';
 
 const Section = ({ children, className = "", fullWidth = false }) => (
   <section className={`py-20 ${fullWidth ? "" : "px-6"} ${className}`}>
@@ -90,6 +91,7 @@ function App() {
             {
               title: "Tiệc Thân Mật",
               time: "15:00 | 09.05.2026",
+              date: "2026-05-09T15:00:00",
               location: "Trung tâm Hội nghị quốc gia",
               address: "Số 57 Phạm Hùng, P. Từ Liêm, TP. Hà Nội",
               icon: "images/2d0b56e7e51cf11036ad8734bdb67e2d.png" // Placeholder for couple icon
@@ -97,6 +99,7 @@ function App() {
             {
               title: "Lễ Vu Quy",
               time: "16:00 | 23.05.2026",
+              date: "2026-05-23T16:00:00",
               location: "Đường Chùa Đào",
               address: "X. Bình Mỹ, Tỉnh Ninh Bình",
               icon: "images/2f13672c1495255380bc3c2815bea4b5.png" // Placeholder for bride icon
@@ -104,8 +107,9 @@ function App() {
             {
               title: "Lễ Thành Hôn",
               time: "10:00 | 24.05.2026",
-              location: "Khu 7, Trạm Trôi",
-              address: "X. Hoài Đức, TP. Hà Nội",
+              date: "2026-05-24T10:00:00",
+              location: "Selena Palace",
+              address: "Km 19, Đức Thượng, Hoài Đức, TP. Hà Nội",
               icon: "images/406d195be5380723a272647434a48d11.png" // Placeholder for flower icon
             }
           ].map((event, i) => (
@@ -123,6 +127,7 @@ function App() {
               <h3 className="text-xl font-medium">{event.title}</h3>
               <div className="space-y-2 text-sm text-charcoal/70">
                 <p className="font-semibold text-charcoal">{event.time}</p>
+                <EventCountdown targetDate={event.date} />
                 <p>{event.location}</p>
                 <p className="text-xs">{event.address}</p>
               </div>
@@ -185,16 +190,7 @@ function App() {
 
       {/* Footer */}
       <footer className="bg-sage py-20 text-center">
-        <h2 className="text-5xl md:text-6xl font-serif italic mb-8">Countdown</h2>
-        <div className="flex justify-center gap-8 md:gap-16">
-          {['DAYS', 'HOURS', 'MINS', 'SECS'].map((label, i) => (
-            <div key={i} className="space-y-2">
-              <span className="text-4xl md:text-5xl font-light">00</span>
-              <p className="text-[10px] tracking-[0.3em] uppercase opacity-60">{label}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-20 pt-10 border-t border-charcoal/5">
+        <div className="pt-10 border-t border-charcoal/5">
           <p className="text-[10px] tracking-[0.4em] uppercase opacity-40">
             Hieu & Thao • 2026
           </p>
