@@ -72,10 +72,6 @@ function App() {
         </div>
       </Section>
 
-      {/* Timeline Section */}
-      <Section className="bg-beige-dark">
-        <motion.div {...fadeIn} className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl tracking-widest uppercase">Timeline Lễ Cưới</h2>
           <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 py-4">
             <span className="text-[10px] tracking-widest uppercase opacity-60">Dresscode</span>
             <div className="flex gap-3 md:gap-2">
@@ -84,6 +80,11 @@ function App() {
               ))}
             </div>
           </div>
+
+      {/* Timeline Section */}
+      <Section className="bg-beige-dark">
+        <motion.div {...fadeIn} className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl tracking-widest uppercase">Timeline Lễ Cưới</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-12 relative">
@@ -184,8 +185,12 @@ function App() {
       </Section>
 
       {/* Large Bottom Image */}
-      <div className="h-[30vh] md:h-[40vh] overflow-hidden">
-        <img src="images/dd4c9895c13ae54b8cb11996622c20ca.jpg" alt="Bottom Hero" className="w-full h-full object-cover" />
+      <div className="w-full overflow-hidden flex justify-center bg-beige-dark">
+        <img 
+          src="images/dd4c9895c13ae54b8cb11996622c20ca.jpg" 
+          alt="Bottom Hero" 
+          className="w-full max-w-5xl h-auto object-contain" 
+        />
       </div>
 
       {/* Footer */}
