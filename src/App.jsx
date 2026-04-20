@@ -106,21 +106,21 @@ function App() {
       </Section>
 
       {/* Hero Section */}
-      <Section fullWidth className="!p-0 relative h-[30vh] md:h-[40vh] overflow-hidden">
-        <img 
+      <Section fullWidth className="!p-0 overflow-hidden bg-beige-dark">
+        {/*<img 
           src="images/1f3293a6d3b84dfc5572b91d9989aa0f.png" 
           alt="Wedding Hero" 
-          className="w-full h-full object-cover"
-        />
+          className="w-full h-auto object-cover max-h-[60vh]"
+        />*/}
         <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 py-4">
-          <span className="text-[10px] tracking-widest uppercase opacity-60">Dresscode</span>
-          <div className="flex gap-3 md:gap-2">
-            {['#FFFFFF', '#F2E8E4', '#C9D3D2', '#FADCD9'].map((color, i) => (
-              <div key={i} className="w-6 h-6 md:w-4 md:h-4 rounded-full border border-charcoal/10" style={{ backgroundColor: color }} />
-            ))}
-          </div>
+            //<span className="text-[10px] tracking-widest uppercase opacity-60">Dresscode</span>
+            <span className="text-4xl tracking-widest uppercase opacity-60">Dresscode</span>
+            <div className="flex gap-3 md:gap-2">
+              {['#FFFFFF', '#F2E8E4', '#C9D3D2', '#FADCD9'].map((color, i) => (
+                <div key={i} className="w-36 h-36 md:w-40 md:h-40 rounded-full border border-charcoal/10" style={{ backgroundColor: color }} />
+              ))}
+            </div>
         </div>
-
       </Section>
 
       {/* Timeline Section */}
@@ -137,7 +137,7 @@ function App() {
               date: "2026-05-09T15:00:00",
               location: "Trung tâm Hội nghị quốc gia",
               address: "Số 57 Phạm Hùng, P. Từ Liêm, TP. Hà Nội",
-              icon: "images/2d0b56e7e51cf11036ad8734bdb67e2d.png" // Placeholder for couple icon
+              icon: "images/timeline-le-than-mat-2.png" // Placeholder for couple icon
             },
             {
               title: "Lễ Vu Quy",
@@ -145,7 +145,7 @@ function App() {
               date: "2026-05-23T16:00:00",
               location: "Đường Chùa Đào",
               address: "X. Bình Mỹ, Tỉnh Ninh Bình",
-              icon: "images/2f13672c1495255380bc3c2815bea4b5.png" // Placeholder for bride icon
+              icon: "images/timeline-black-white-couple.png" // Placeholder for flower icon
             },
             {
               title: "Lễ Thành Hôn",
@@ -153,7 +153,7 @@ function App() {
               date: "2026-05-24T10:00:00",
               location: "Selena Palace",
               address: "Km 19, Đức Thượng, Hoài Đức, TP. Hà Nội",
-              icon: "images/406d195be5380723a272647434a48d11.png" // Placeholder for flower icon
+              icon: "images/timeline-le-thanh-hon.png" // Placeholder for flower icon
             }
           ].map((event, i) => (
             <motion.div 
@@ -193,43 +193,66 @@ function App() {
       </Section>
 
       {/* Footer Gallery */}
-      <Section fullWidth className="!p-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+      <Section className="bg-beige-dark/30">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Top Left (Desktop) / First (Mobile) */}
-          <div className="aspect-[4/3] md:aspect-square overflow-hidden group md:row-start-1 md:col-start-1">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="aspect-[4/3] md:aspect-square overflow-hidden group md:row-start-1 md:col-start-1 rounded-xl shadow-md"
+          >
             <img 
               src="images/a6e5cf7c8d80b3001aa2fc9b3bfb4781.jpg" 
               alt="Gallery 1" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
-          </div>
+          </motion.div>
 
           {/* Bottom Left (Desktop) / Second (Mobile) */}
-          <div className="aspect-[4/3] md:aspect-square overflow-hidden group md:row-start-2 md:col-start-1">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="aspect-[4/3] md:aspect-square overflow-hidden group md:row-start-2 md:col-start-1 rounded-xl shadow-md"
+          >
             <img 
               src="images/d5cc79b0aa59e4fa99b234b40c554b9f.jpg" 
               alt="Gallery 2" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
-          </div>
+          </motion.div>
 
           {/* Right Side Spanning Both Rows (Desktop) / Third (Mobile) */}
-          <div className="aspect-[4/3] md:aspect-auto md:row-start-1 md:row-span-2 md:col-start-2 overflow-hidden group">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="aspect-[4/3] md:aspect-auto md:row-start-1 md:row-span-2 md:col-start-2 overflow-hidden group rounded-xl shadow-md"
+          >
             <img 
               src="images/6a0b6089c1a8bada8f3bef003275678e.jpg" 
               alt="Gallery 3" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
-          </div>
+          </motion.div>
 
           {/* Below All (Desktop) / Fourth (Mobile) */}
-          <div className="md:col-span-2 aspect-[16/9] md:aspect-[21/9] overflow-hidden group">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="md:col-span-2 aspect-[16/9] md:aspect-[21/9] overflow-hidden group rounded-xl shadow-md"
+          >
             <img 
               src="images/46cec36a78967c258ba70e9db6d7c593.jpg" 
               alt="Gallery 4" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
-          </div>
+          </motion.div>
         </div>
       </Section>
 
@@ -240,9 +263,9 @@ function App() {
           <div className="max-w-xl mx-auto">
             <textarea 
               placeholder="Lời chúc của bạn..."
-              className="w-full bg-transparent border border-charcoal/10 p-6 focus:border-charcoal outline-none transition-all h-32 resize-none"
+              className="w-full bg-transparent border border-charcoal/10 p-6 focus:border-charcoal outline-none transition-all h-32 resize-none rounded-lg"
             />
-            <button className="w-full bg-charcoal text-white py-4 uppercase tracking-[0.2em] text-sm mt-4">
+            <button className="w-full bg-charcoal text-white py-4 uppercase tracking-[0.2em] text-sm mt-4 rounded-lg hover:bg-charcoal/90 transition-all">
               GỬI LỜI CHÚC
             </button>
           </div>
@@ -250,13 +273,22 @@ function App() {
       </Section>
 
       {/* Large Bottom Image */}
-      <div className="w-full overflow-hidden flex justify-center bg-beige-dark">
-        <img 
-          src="images/dd4c9895c13ae54b8cb11996622c20ca.jpg" 
-          alt="Bottom Hero" 
-          className="w-full max-w-5xl h-auto object-contain" 
-        />
-      </div>
+      <Section>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full flex justify-center"
+        >
+          <div className="rounded-2xl overflow-hidden shadow-lg bg-white/50 backdrop-blur-sm">
+            <img 
+              src="images/dd4c9895c13ae54b8cb11996622c20ca.jpg" 
+              alt="Bottom Hero" 
+              className="w-full h-auto max-h-[80vh] object-contain mx-auto" 
+            />
+          </div>
+        </motion.div>
+      </Section>
 
       {/* Footer */}
       <footer className="bg-sage py-20 text-center">
