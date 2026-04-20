@@ -151,21 +151,44 @@ function App() {
       </Section>
 
       {/* Footer Gallery */}
-      <Section fullWidth className="!p-0 grid grid-cols-2 md:grid-cols-4 gap-1">
-        {[
-          "a2c895fe9416dd11984bca7b053b64ec.jpg",
-          "7bc52b35b659ef2cc914cf6a1cd0f446.jpg",
-          "6a0b6089c1a8bada8f3bef003275678e.jpg",
-          "46cec36a78967c258ba70e9db6d7c593.jpg"
-        ].map((img, i) => (
-          <div key={i} className="aspect-square overflow-hidden group">
+      <Section fullWidth className="!p-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+          {/* Top Left (Desktop) / First (Mobile) */}
+          <div className="aspect-[4/3] md:aspect-square overflow-hidden group md:row-start-1 md:col-start-1">
             <img 
-              src={`images/${img}`} 
-              alt={`Gallery ${i}`} 
+              src="images/a6e5cf7c8d80b3001aa2fc9b3bfb4781.jpg" 
+              alt="Gallery 1" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
             />
           </div>
-        ))}
+
+          {/* Bottom Left (Desktop) / Second (Mobile) */}
+          <div className="aspect-[4/3] md:aspect-square overflow-hidden group md:row-start-2 md:col-start-1">
+            <img 
+              src="images/d5cc79b0aa59e4fa99b234b40c554b9f.jpg" 
+              alt="Gallery 2" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            />
+          </div>
+
+          {/* Right Side Spanning Both Rows (Desktop) / Third (Mobile) */}
+          <div className="aspect-[4/3] md:aspect-auto md:row-start-1 md:row-span-2 md:col-start-2 overflow-hidden group">
+            <img 
+              src="images/6a0b6089c1a8bada8f3bef003275678e.jpg" 
+              alt="Gallery 3" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            />
+          </div>
+
+          {/* Below All (Desktop) / Fourth (Mobile) */}
+          <div className="md:col-span-2 aspect-[16/9] md:aspect-[21/9] overflow-hidden group">
+            <img 
+              src="images/46cec36a78967c258ba70e9db6d7c593.jpg" 
+              alt="Gallery 4" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            />
+          </div>
+        </div>
       </Section>
 
       {/* Wishes Section */}
