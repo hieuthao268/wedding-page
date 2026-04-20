@@ -62,7 +62,7 @@ function App() {
             </div>
             
             <div className="flex justify-center md:justify-start py-4">
-              <img src="images/5fbbafa58da397959a9a169a82f53d75.png" alt="Rings" className="w-16 h-16 opacity-80" />
+              <img src="images/intro-ring.png" alt="Rings" className="w-16 h-16 opacity-80" />
             </div>
 
             <h2 className="text-4xl md:text-5xl leading-tight font-serif italic">
@@ -112,12 +112,11 @@ function App() {
           alt="Wedding Hero" 
           className="w-full h-auto object-cover max-h-[60vh]"
         />*/}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 py-4">
-            //<span className="text-[10px] tracking-widest uppercase opacity-60">Dresscode</span>
-            <span className="text-4xl tracking-widest uppercase opacity-60">Dresscode</span>
-            <div className="flex gap-3 md:gap-2">
+        <div className="flex flex-col justify-center items-center gap-8 py-16">
+            <h2 className="text-4xl tracking-[0.3em] uppercase">Dresscode</h2>
+            <div className="flex gap-4 md:gap-6">
               {['#FFFFFF', '#F2E8E4', '#C9D3D2', '#FADCD9'].map((color, i) => (
-                <div key={i} className="w-36 h-36 md:w-40 md:h-40 rounded-full border border-charcoal/10" style={{ backgroundColor: color }} />
+                <div key={i} className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-charcoal/10 shadow-sm" style={{ backgroundColor: color }} />
               ))}
             </div>
         </div>
