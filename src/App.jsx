@@ -35,27 +35,57 @@ function App() {
       </header>
 
       {/* Intro Section */}
-      <Section className="text-center bg-beige">
-        <motion.div {...fadeIn} className="space-y-8">
-          <div className="flex justify-between items-center max-w-xs mx-auto text-[10px] tracking-[0.2em] uppercase opacity-60">
-            <span>SINCE</span>
-            <div className="w-12 h-px bg-charcoal" />
-            <span>NOV 2022</span>
-          </div>
-          
-          <div className="flex justify-center py-4">
-            <img src="images/5fbbafa58da397959a9a169a82f53d75.png" alt="Rings" className="w-16 h-16 opacity-80" />
-          </div>
+      <Section className="bg-beige">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <motion.div {...fadeIn} className="space-y-8 text-center md:text-left">
+            <div className="flex justify-between items-center max-w-xs mx-auto md:mx-0 text-[10px] tracking-[0.2em] uppercase opacity-60">
+              <span>SINCE</span>
+              <div className="w-12 h-px bg-charcoal" />
+              <span>NOV 2022</span>
+            </div>
+            
+            <div className="flex justify-center md:justify-start py-4">
+              <img src="images/5fbbafa58da397959a9a169a82f53d75.png" alt="Rings" className="w-16 h-16 opacity-80" />
+            </div>
 
-          <h2 className="text-4xl md:text-5xl leading-tight font-serif italic">
-            First love, no<br/>sequel needed.
-          </h2>
+            <h2 className="text-4xl md:text-5xl leading-tight font-serif italic">
+              First love, no<br/>sequel needed.
+            </h2>
 
-          <p className="max-w-xl mx-auto text-sm leading-relaxed font-light text-charcoal/80">
-            Yêu nhau hơn 1200 ngày, đã cùng nhau đi qua 3 quốc gia, 10 tỉnh thành, nhưng chỉ giận nhau 4 lần...
-            Và hôm nay, hai đứa quyết định làm một việc có vẻ "to tát" hơn một chút: mời mọi người đến chứng kiến một chương mới là sẽ tiếp tục đi cùng nhau... lâu hơn nữa.
-          </p>
-        </motion.div>
+            <p className="max-w-xl text-sm leading-relaxed font-light text-charcoal/80">
+              Yêu nhau hơn 1200 ngày, đã cùng nhau đi qua 3 quốc gia, 10 tỉnh thành, nhưng chỉ giận nhau 4 lần...
+              Và hôm nay, hai đứa quyết định làm một việc có vẻ "to tát" hơn một chút: mời mọi người đến chứng kiến một chương mới là sẽ tiếp tục đi cùng nhau... lâu hơn nữa.
+            </p>
+          </motion.div>
+
+          <div className="flex flex-col gap-4">
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="rounded-lg overflow-hidden shadow-sm"
+            >
+              <img 
+                src="images/45717bd71fee87c89f0ae0037b46d708.jpg" 
+                alt="Intro 1" 
+                className="w-full h-auto object-cover" 
+              />
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="rounded-lg overflow-hidden shadow-sm"
+            >
+              <img 
+                src="images/a4bf7329fe08b8e5919ac6051b434891.jpg" 
+                alt="Intro 2" 
+                className="w-full h-auto object-cover" 
+              />
+            </motion.div>
+          </div>
+        </div>
       </Section>
 
       {/* Hero Section */}
