@@ -28,14 +28,31 @@ function App() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-sage py-8 text-center sticky top-0 z-40 backdrop-blur-md bg-sage/90">
+      <header className="bg-sage py-12 px-6 text-center space-y-8">
         <h1 className="text-3xl md:text-4xl tracking-[0.3em] font-light">
           TRUNG HIEU & PHUONG THAO
         </h1>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-12 text-charcoal/60 border-t border-charcoal/5 pt-8 max-w-4xl mx-auto">
+          <p className="tracking-[0.5em] text-base md:text-lg uppercase">MAY 2026</p>
+          <p className="tracking-[0.3em] text-sm md:text-base uppercase font-semibold">#SEAYOUATTHEAISLE</p>
+          <p className="tracking-[0.5em] text-base md:text-lg uppercase">HA NOI</p>
+        </div>
       </header>
 
       {/* Intro Section */}
       <Section className="bg-beige">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 rounded-lg overflow-hidden shadow-sm"
+        >
+          <img 
+            src="images/7bc52b35b659ef2cc914cf6a1cd0f446.jpg" 
+            alt="Intro Banner" 
+            className="w-full h-auto object-cover" 
+          />
+        </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div {...fadeIn} className="space-y-8 text-center md:text-left">
             <div className="flex justify-between items-center max-w-xs mx-auto md:mx-0 text-[10px] tracking-[0.2em] uppercase opacity-60">
@@ -95,21 +112,16 @@ function App() {
           alt="Wedding Hero" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute bottom-6 left-0 right-0 text-center text-white space-y-1">
-          <p className="tracking-[0.5em] text-xs">MAY 2026</p>
-          <p className="tracking-[0.3em] text-[10px]">#SEAYOUATTHEAISLE</p>
-          <p className="tracking-[0.5em] text-xs">HA NOI</p>
-        </div>
-      </Section>
-
-          <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 py-4">
-            <span className="text-[10px] tracking-widest uppercase opacity-60">Dresscode</span>
-            <div className="flex gap-3 md:gap-2">
-              {['#FFFFFF', '#F2E8E4', '#C9D3D2', '#FADCD9'].map((color, i) => (
-                <div key={i} className="w-6 h-6 md:w-4 md:h-4 rounded-full border border-charcoal/10" style={{ backgroundColor: color }} />
-              ))}
-            </div>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 py-4">
+          <span className="text-[10px] tracking-widest uppercase opacity-60">Dresscode</span>
+          <div className="flex gap-3 md:gap-2">
+            {['#FFFFFF', '#F2E8E4', '#C9D3D2', '#FADCD9'].map((color, i) => (
+              <div key={i} className="w-6 h-6 md:w-4 md:h-4 rounded-full border border-charcoal/10" style={{ backgroundColor: color }} />
+            ))}
           </div>
+        </div>
+
+      </Section>
 
       {/* Timeline Section */}
       <Section className="bg-beige-dark">
