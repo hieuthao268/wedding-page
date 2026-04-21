@@ -105,23 +105,6 @@ function App() {
         </div>
       </Section>
 
-      {/* Hero Section */}
-      <Section fullWidth className="!p-0 overflow-hidden bg-beige-dark">
-        {/*<img 
-          src="images/1f3293a6d3b84dfc5572b91d9989aa0f.png" 
-          alt="Wedding Hero" 
-          className="w-full h-auto object-cover max-h-[60vh]"
-        />*/}
-        <div className="flex flex-col justify-center items-center gap-8 py-16">
-            <h2 className="text-4xl tracking-[0.3em] uppercase">Dresscode</h2>
-            <div className="flex gap-4 md:gap-6">
-              {['#FFFFFF', '#F2E8E4', '#C9D3D2', '#FADCD9'].map((color, i) => (
-                <div key={i} className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-charcoal/10 shadow-sm" style={{ backgroundColor: color }} />
-              ))}
-            </div>
-        </div>
-      </Section>
-
       {/* Timeline Section */}
       <Section className="bg-beige-dark">
         <motion.div {...fadeIn} className="text-center mb-16 space-y-4">
@@ -133,14 +116,14 @@ function App() {
             {
               title: "Tiệc Thân Mật",
               time: "15:00 | 09.05.2026",
-              date: "2026-05-09T15:00:00",
+              date: "2026-05-09T16:00:00",
               location: "Trung tâm Hội nghị quốc gia",
               address: "Số 57 Phạm Hùng, P. Từ Liêm, TP. Hà Nội",
               icon: "images/timeline-le-than-mat-2.png" // Placeholder for couple icon
             },
             {
               title: "Lễ Vu Quy",
-              time: "16:00 | 23.05.2026",
+              time: "06:00 | 24.05.2026",
               date: "2026-05-23T16:00:00",
               location: "Đường Chùa Đào",
               address: "X. Bình Mỹ, Tỉnh Ninh Bình",
@@ -181,11 +164,28 @@ function App() {
         </div>
       </Section>
 
+      {/* Hero Section */}
+      <Section fullWidth className="!p-0 overflow-hidden bg-beige-dark">
+        {/*<img 
+          src="images/1f3293a6d3b84dfc5572b91d9989aa0f.png" 
+          alt="Wedding Hero" 
+          className="w-full h-auto object-cover max-h-[60vh]"
+        />*/}
+        <div className="flex flex-col justify-center items-center gap-8 py-16">
+            <h2 className="text-4xl tracking-[0.3em] uppercase">Dresscode</h2>
+            <div className="flex gap-4 md:gap-6">
+              {['#FFFFFF', '#F2E8E4', '#C9D3D2', '#FADCD9'].map((color, i) => (
+                <div key={i} className="w-16 h-16 md:w-20 md:h-20 rounded-full border border-charcoal/10 shadow-sm" style={{ backgroundColor: color }} />
+              ))}
+            </div>
+        </div>
+      </Section>
+
       {/* RSVP Section */}
       <Section id="rsvp" className="bg-sage/20">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="rounded-lg overflow-hidden h-[500px]">
-            <img src="images/45717bd71fee87c89f0ae0037b46d708.jpg" alt="RSVP Side" className="w-full h-full object-cover" />
+        <div className="grid md:grid-cols-2 gap-12 items-stretch">
+          <div className="rounded-lg overflow-hidden h-full min-h-[500px]">
+            <img src="images/dd4c9895c13ae54b8cb11996622c20ca.jpg" alt="RSVP Side" className="w-full h-full object-cover" />
           </div>
           <RSVPForm />
         </div>
@@ -255,35 +255,19 @@ function App() {
         </div>
       </Section>
 
-      {/* Wishes Section */}
-      <Section className="bg-beige text-center">
-        <motion.div {...fadeIn} className="space-y-8">
-          <h2 className="text-3xl md:text-4xl tracking-widest uppercase">Gửi lời chúc đến<br/>vợ chồng son</h2>
-          <div className="max-w-xl mx-auto">
-            <textarea 
-              placeholder="Lời chúc của bạn..."
-              className="w-full bg-transparent border border-charcoal/10 p-6 focus:border-charcoal outline-none transition-all h-32 resize-none rounded-lg"
-            />
-            <button className="w-full bg-charcoal text-white py-4 uppercase tracking-[0.2em] text-sm mt-4 rounded-lg hover:bg-charcoal/90 transition-all">
-              GỬI LỜI CHÚC
-            </button>
-          </div>
-        </motion.div>
-      </Section>
-
       {/* Large Bottom Image */}
-      <Section>
+      <Section className="py-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="w-full flex justify-center"
+          className="max-w-6xl mx-auto px-6"
         >
-          <div className="rounded-2xl overflow-hidden shadow-lg bg-white/50 backdrop-blur-sm">
+          <div className="rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-white/50 backdrop-blur-sm">
             <img 
-              src="images/dd4c9895c13ae54b8cb11996622c20ca.jpg" 
+              src="images/a2c895fe9416dd11984bca7b053b64ec.jpg" 
               alt="Bottom Hero" 
-              className="w-full h-auto max-h-[80vh] object-contain mx-auto" 
+              className="w-full h-auto max-h-[125vh] object-cover object-bottom" 
             />
           </div>
         </motion.div>

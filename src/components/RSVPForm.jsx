@@ -6,12 +6,13 @@ const RSVPForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     guests: '1',
+    message: '',
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('RSVP Submitted:', { status, ...formData });
-    alert('Cảm ơn bạn đã xác nhận tham dự!');
+    alert('Cảm ơn bạn đã xác nhận và gửi lời chúc!');
   };
 
   return (
@@ -21,7 +22,7 @@ const RSVPForm = () => {
       viewport={{ once: true }}
       className="max-w-md mx-auto p-8 bg-white/50 backdrop-blur-sm border border-beige-dark rounded-lg shadow-sm"
     >
-      <h2 className="text-2xl text-center mb-8 tracking-widest uppercase">XÁC NHẬN THAM DỰ</h2>
+      <h2 className="text-2xl text-center mb-8 tracking-widest uppercase leading-tight">XÁC NHẬN THAM DỰ & GỬI LỜI CHÚC</h2>
       
       <div className="flex justify-center gap-4 mb-8">
         <button
@@ -66,6 +67,16 @@ const RSVPForm = () => {
               <option key={n} value={n}>{n}</option>
             ))}
           </select>
+        </div>
+
+        <div>
+          <label className="block text-sm uppercase tracking-wider mb-2">Lời chúc của bạn (Tùy chọn):</label>
+          <textarea
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            className="w-full bg-transparent border border-charcoal/10 p-4 focus:border-charcoal outline-none transition-all h-24 resize-none rounded"
+            placeholder="Nhập lời chúc..."
+          />
         </div>
 
         <motion.button
