@@ -1,12 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { MapPin, Calendar, Clock } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MapPin, Calendar, Clock, ChevronDown, ChevronUp } from 'lucide-react';
 import MusicPlayer from './components/audio/MusicPlayer';
 import RSVPForm from './components/RSVPForm';
 import EventCountdown from './components/EventCountdown';
 
-const Section = ({ children, className = "", fullWidth = false }) => (
-  <section className={`py-20 ${fullWidth ? "" : "px-6"} ${className}`}>
+const Section = ({ children, className = "", fullWidth = false, id = "" }) => (
+  <section id={id} className={`py-20 ${fullWidth ? "" : "px-6"} ${className}`}>
     {fullWidth ? (
       children
     ) : (
@@ -18,6 +18,7 @@ const Section = ({ children, className = "", fullWidth = false }) => (
 );
 
 function App() {
+  const [showQR, setShowQR] = useState(false);
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -125,7 +126,7 @@ function App() {
               title: "Lễ Vu Quy",
               time: "06:00 | 24.05.2026",
               date: "2026-05-23T16:00:00",
-              location: "Đường Chùa Đào",
+              location: "Đường Chùa Gào",
               address: "X. Bình Mỹ, Tỉnh Ninh Bình",
               icon: "images/timeline-black-white-couple.png" // Placeholder for flower icon
             },
@@ -188,6 +189,61 @@ function App() {
             <img src="images/dd4c9895c13ae54b8cb11996622c20ca.jpg" alt="RSVP Side" className="w-full h-full object-cover" />
           </div>
           <RSVPForm />
+        </div>
+      </Section>
+
+      {/* Gift Section */}
+      <Section className="bg-white">
+        <div className="text-center space-y-8">
+          <motion.div {...fadeIn}>
+            <h2 className="text-3xl tracking-widest uppercase mb-4">Gửi Mừng Cưới</h2>
+            <p className="text-charcoal/60 max-w-lg mx-auto mb-8">
+              Sự hiện diện của bạn là món quà quý giá nhất dành cho chúng mình. 
+              Nếu bạn có ý định gửi quà mừng, chúng mình xin gửi thông tin tại đây.
+            </p>
+            <button 
+              onClick={() => setShowQR(!showQR)}
+              className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.2em] border border-charcoal px-8 py-3 hover:bg-charcoal hover:text-white transition-all duration-300"
+            >
+              {showQR ? 'THU GỌN' : 'GỬI MỪNG CƯỚI'}
+              {showQR ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </button>
+          </motion.div>
+
+          <AnimatePresence>
+            {showQR && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto pt-12 pb-8">
+                  <div className="space-y-4">
+                    <p className="text-lg font-medium tracking-widest uppercase">QR Cô Dâu</p>
+                    <div className="bg-beige/30 p-4 rounded-xl">
+                      <img 
+                        src="images/image-qr-co-dau.png" 
+                        alt="QR cô dâu" 
+                        className="w-full max-w-[300px] mx-auto rounded-lg shadow-sm"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <p className="text-lg font-medium tracking-widest uppercase">QR Chú Rể</p>
+                    <div className="bg-beige/30 p-4 rounded-xl">
+                      <img 
+                        src="images/image-qr-chu-re.png" 
+                        alt="QR chú rể" 
+                        className="w-full max-w-[300px] mx-auto rounded-lg shadow-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </Section>
 
