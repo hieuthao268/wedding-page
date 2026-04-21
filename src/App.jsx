@@ -120,7 +120,8 @@ function App() {
               date: "2026-05-09T16:00:00",
               location: "Trung tâm Hội nghị quốc gia",
               address: "Số 57 Phạm Hùng, P. Từ Liêm, TP. Hà Nội",
-              icon: "images/timeline-le-than-mat-2.png" // Placeholder for couple icon
+              icon: "images/timeline-le-than-mat-2.png",
+              mapsLink: "https://maps.app.goo.gl/RjQ7QZWjBFXJ9taq6"
             },
             {
               title: "Lễ Vu Quy",
@@ -128,7 +129,8 @@ function App() {
               date: "2026-05-23T16:00:00",
               location: "Đường Chùa Gào",
               address: "X. Bình Mỹ, Tỉnh Ninh Bình",
-              icon: "images/timeline-black-white-couple.png" // Placeholder for flower icon
+              icon: "images/timeline-black-white-couple.png",
+              mapsLink: "https://maps.app.goo.gl/jKahCvxnMb3WjYBm8"
             },
             {
               title: "Lễ Thành Hôn",
@@ -136,7 +138,8 @@ function App() {
               date: "2026-05-24T10:00:00",
               location: "Selena Palace",
               address: "Km 19, Đức Thượng, Hoài Đức, TP. Hà Nội",
-              icon: "images/timeline-le-thanh-hon.png" // Placeholder for flower icon
+              icon: "images/timeline-le-thanh-hon.png",
+              mapsLink: "https://maps.app.goo.gl/Lxim85Ss7U6C1cXJA"
             }
           ].map((event, i) => (
             <motion.div 
@@ -157,9 +160,14 @@ function App() {
                 <p>{event.location}</p>
                 <p className="text-base">{event.address}</p>
               </div>
-              <button className="flex items-center gap-2 mx-auto text-[10px] tracking-[0.2em] uppercase border-b border-charcoal/20 pb-1 mt-6 hover:opacity-70 transition-all">
+              <a 
+                href={event.mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mx-auto text-[10px] tracking-[0.2em] uppercase border-b border-charcoal/20 pb-1 mt-6 hover:opacity-70 transition-all"
+              >
                 <MapPin className="w-3 h-3" /> Chỉ đường
-              </button>
+              </a>
             </motion.div>
           ))}
         </div>
