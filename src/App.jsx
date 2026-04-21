@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Calendar, Clock } from 'lucide-react';
-import MusicPlayer from './components/MusicPlayer';
+import MusicPlayer from './components/audio/MusicPlayer';
 import RSVPForm from './components/RSVPForm';
 import EventCountdown from './components/EventCountdown';
 
@@ -146,15 +146,15 @@ function App() {
               viewport={{ once: true }}
               className="text-center space-y-4"
             >
-              <div className="h-24 flex items-end justify-center mb-6">
-                <img src={event.icon} alt={event.title} className="h-16 w-auto grayscale" />
+              <div className="h-32 flex items-end justify-center mb-6">
+                <img src={event.icon} alt={event.title} className="h-16 w-auto grayscale text-xxl" />
               </div>
-              <h3 className="text-xl font-medium">{event.title}</h3>
-              <div className="space-y-2 text-sm text-charcoal/70">
+              <h3 className="text-2xl font-medium">{event.title}</h3>
+              <div className="space-y-2 text-lg text-charcoal/70">
                 <p className="font-semibold text-charcoal">{event.time}</p>
                 <EventCountdown targetDate={event.date} />
                 <p>{event.location}</p>
-                <p className="text-xs">{event.address}</p>
+                <p className="text-base">{event.address}</p>
               </div>
               <button className="flex items-center gap-2 mx-auto text-[10px] tracking-[0.2em] uppercase border-b border-charcoal/20 pb-1 mt-6 hover:opacity-70 transition-all">
                 <MapPin className="w-3 h-3" /> Chỉ đường
@@ -256,7 +256,7 @@ function App() {
       </Section>
 
       {/* Large Bottom Image */}
-      <Section className="py-12">
+      <Section className="!pt-0 pb-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -282,7 +282,11 @@ function App() {
         </div>
       </footer>
 
-      <MusicPlayer />
+      <MusicPlayer 
+        src="/wedding-page/audio/wedding-theme.mp3" 
+        songTitle="Ordinary" 
+        artistName="Alex Warren" 
+      />
     </div>
   );
 }
