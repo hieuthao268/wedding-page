@@ -320,7 +320,7 @@ function App() {
       </Section>
 
       {/* Large Bottom Image */}
-      <Section className="!pt-0 pb-12">
+      {/*<Section className="!pt-0 pb-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -336,6 +336,7 @@ function App() {
           </div>
         </motion.div>
       </Section>
+      */}
 
       {/* Footer */}
       <footer className="bg-sage py-20 text-center">
