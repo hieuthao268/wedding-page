@@ -1,13 +1,14 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 
 export function useAudioPlayer(src, defaultVolume = 0.3) {
-  const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
   const audioCtxRef = useRef(null);
   const sourceNodeRef = useRef(null);
   const gainNodeRef = useRef(null);
   const initializedRef = useRef(false);
+  const audioBufferRef = useRef(null);
 
   const initAudio = useCallback(async () => {
     if (initializedRef.current) return;
@@ -26,6 +27,7 @@ export function useAudioPlayer(src, defaultVolume = 0.3) {
       const response = await fetch(src);
       const arrayBuffer = await response.arrayBuffer();
       const audioBuffer = await ctx.decodeAudioData(arrayBuffer);
+      audioBufferRef.current = audioBuffer;
 
       const sourceNode = ctx.createBufferSource();
       sourceNode.buffer = audioBuffer;
@@ -33,53 +35,43 @@ export function useAudioPlayer(src, defaultVolume = 0.3) {
       sourceNode.connect(gainNode);
       sourceNodeRef.current = sourceNode;
 
+      // Start in suspended state
+      await ctx.suspend();
       sourceNode.start(0);
+      
       setIsReady(true);
-      // It starts unmuted (playing) upon first interaction
-      setIsMuted(false); 
+      setIsPlaying(false);
     } catch (error) {
       console.error("Failed to initialize audio:", error);
-      initializedRef.current = false; // Allow retry on failure
+      initializedRef.current = false; 
     }
   }, [src, defaultVolume]);
 
-  const toggleMute = useCallback(async () => {
-    if (!initializedRef.current) {
-      await initAudio();
-      return; // The first click initializes and starts playback (unmuted)
-    }
+  // Pre-load audio when component mounts
+  useEffect(() => {
+    initAudio();
+  }, [initAudio]);
 
+  const togglePlay = useCallback(async () => {
     const ctx = audioCtxRef.current;
-    const gainNode = gainNodeRef.current;
+    if (!ctx || !isReady) return;
 
-    if (!ctx || !gainNode) return;
-
-    // If context is suspended (some browsers do this even after creation), resume it
-    if (ctx.state === 'suspended') {
+    if (ctx.state === 'suspended' || !isPlaying) {
       await ctx.resume();
-    }
-
-    if (isMuted) {
-      // Unmute: Ramp volume back to default
-      gainNode.gain.linearRampToValueAtTime(defaultVolume, ctx.currentTime + 0.6);
-      setIsMuted(false);
+      setIsPlaying(true);
     } else {
-      // Mute: Ramp volume down to 0
-      gainNode.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.6);
-      setIsMuted(true);
+      await ctx.suspend();
+      setIsPlaying(false);
     }
-  }, [initAudio, isMuted, defaultVolume]);
+  }, [isReady, isPlaying]);
 
   useEffect(() => {
     return () => {
-      // Cleanup on unmount
       if (audioCtxRef.current) {
         if (sourceNodeRef.current) {
           try {
             sourceNodeRef.current.stop();
-          } catch (e) {
-            // Ignore errors if it hasn't started yet
-          }
+          } catch (e) {}
           sourceNodeRef.current.disconnect();
         }
         if (gainNodeRef.current) {
@@ -90,5 +82,5 @@ export function useAudioPlayer(src, defaultVolume = 0.3) {
     };
   }, []);
 
-  return { isMuted, toggleMute, isReady };
+  return { isPlaying, togglePlay, isReady };
 }

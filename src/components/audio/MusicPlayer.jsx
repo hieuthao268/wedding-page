@@ -1,8 +1,9 @@
 import React from 'react';
 import { useAudioPlayer } from '../../hooks/useAudioPlayer';
+import { Play, Pause } from 'lucide-react';
 
 export default function MusicPlayer({ src, songTitle, artistName }) {
-  const { isMuted, toggleMute, isReady } = useAudioPlayer(src, 0.3);
+  const { isPlaying, togglePlay, isReady } = useAudioPlayer(src, 0.3);
 
   return (
     <div 
@@ -31,7 +32,7 @@ export default function MusicPlayer({ src, songTitle, artistName }) {
           .eq-playing .eq-bar {
             animation: equalize 1s infinite ease-in-out;
           }
-          .eq-muted .eq-bar {
+          .eq-paused .eq-bar {
             height: 4px !important;
             background-color: #9CA3AF; /* gray-400 */
             animation: none;
@@ -51,53 +52,31 @@ export default function MusicPlayer({ src, songTitle, artistName }) {
       </style>
       
       <div 
-        className="flex items-center gap-[10px] bg-white border border-charcoal/10 rounded-full"
+        className="flex items-center gap-[12px] bg-white border border-charcoal/10 rounded-full"
         style={{
-          padding: '6px 16px 6px 6px',
-          boxShadow: '0 2px 12px rgba(0,0,0,0.10)',
+          padding: '8px 20px 8px 8px', // Increased padding
+          boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+          minWidth: '250px' // Base minimum width
         }}
       >
         <button
-          onClick={toggleMute}
-          aria-pressed={!isMuted}
-          aria-label={isMuted ? "Unmute music" : "Mute music"}
-          title={!isReady ? "Click to play music" : (isMuted ? "Unmute music" : "Mute music")}
-          className="relative w-[36px] h-[36px] rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors focus:outline-none"
+          onClick={togglePlay}
+          disabled={!isReady}
+          aria-label={isPlaying ? "Pause music" : "Play music"}
+          className="relative w-[42px] h-[42px] rounded-full flex items-center justify-center bg-charcoal text-white hover:bg-charcoal/90 transition-all focus:outline-none shadow-sm"
         >
-          {/* Speaker with waves (Playing) */}
-          <svg 
-            className={`absolute w-4 h-4 text-charcoal transition-opacity duration-200 ${(!isMuted && isReady) ? 'opacity-100' : 'opacity-0'}`} 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-          </svg>
-          
-          {/* Speaker with X (Muted or Not Ready) */}
-          <svg 
-            className={`absolute w-4 h-4 text-charcoal transition-opacity duration-200 ${(isMuted || !isReady) ? 'opacity-100' : 'opacity-0'}`} 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <line x1="23" y1="9" x2="17" y2="15"></line>
-            <line x1="17" y1="9" x2="23" y2="15"></line>
-          </svg>
+          {!isReady ? (
+            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          ) : isPlaying ? (
+            <Pause className="w-5 h-5 fill-current" />
+          ) : (
+            <Play className="w-5 h-5 fill-current ml-0.5" />
+          )}
         </button>
 
-        <div className="flex flex-col justify-center max-w-[200px]">
+        <div className="flex flex-col justify-center max-w-[250px]"> {/* Increased from 200px (25% increase) */}
           <div className="flex items-center gap-2">
-            <span className="text-[13px] font-medium text-charcoal truncate">
+            <span className="text-[13px] font-semibold text-charcoal truncate">
               {songTitle}
             </span>
             
@@ -105,7 +84,7 @@ export default function MusicPlayer({ src, songTitle, artistName }) {
               {!isReady ? (
                 <div className="pulse-dot ml-1" />
               ) : (
-                <div className={`flex items-end gap-[2px] h-[14px] ${isMuted ? 'eq-muted' : 'eq-playing'}`}>
+                <div className={`flex items-end gap-[2px] h-[14px] ${!isPlaying ? 'eq-paused' : 'eq-playing'}`}>
                   <div className="eq-bar" style={{ animationDelay: '0ms' }} />
                   <div className="eq-bar" style={{ animationDelay: '100ms' }} />
                   <div className="eq-bar" style={{ animationDelay: '200ms' }} />
