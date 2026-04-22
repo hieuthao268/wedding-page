@@ -54,9 +54,9 @@ export default function MusicPlayer({ src, songTitle, artistName }) {
       <div 
         className="flex items-center gap-[12px] bg-white border border-charcoal/10 rounded-full"
         style={{
-          padding: '8px 20px 8px 8px', // Increased padding (25%+)
-          boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-          minWidth: '240px' // Increased from ~180px (25%+)
+          padding: '6px 12px 6px 6px',
+          boxShadow: '0 2px 16px rgba(0,0,0,0.08)',
+          minWidth: '180px'
         }}
       >
         <button
