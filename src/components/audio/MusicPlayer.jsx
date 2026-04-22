@@ -54,17 +54,17 @@ export default function MusicPlayer({ src, songTitle, artistName }) {
       <div 
         className="flex items-center gap-[12px] bg-white border border-charcoal/10 rounded-full"
         style={{
-          padding: '6px 16px 6px 6px', // Increased padding
-          boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
-          minWidth: '180px' // Base minimum width
+          padding: '8px 20px 8px 8px', // Increased padding (25%+)
+          boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+          minWidth: '240px' // Increased from ~180px (25%+)
         }}
       >
         <button
           onClick={togglePlay}
-          disabled={!isReady}
           aria-label={isPlaying ? "Pause music" : "Play music"}
           className="relative w-[42px] h-[42px] rounded-full flex items-center justify-center bg-charcoal text-white hover:bg-charcoal/90 transition-all focus:outline-none shadow-sm"
         >
+          {/* On iOS, it might stay "not ready" until first touch, but let's show Play icon anyway if it's likely ready */}
           {!isReady ? (
             <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
           ) : isPlaying ? (
@@ -74,7 +74,7 @@ export default function MusicPlayer({ src, songTitle, artistName }) {
           )}
         </button>
 
-        <div className="flex flex-col justify-center max-w-[250px]"> {/* Increased from 200px (25% increase) */}
+        <div className="flex flex-col justify-center max-w-[200px]">
           <div className="flex items-center gap-2">
             <span className="text-[13px] font-semibold text-charcoal truncate">
               {songTitle}
